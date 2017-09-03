@@ -7,9 +7,10 @@ import com.vk.sdk.api.model.VKAttachments;
 
 import java.util.NoSuchElementException;
 
+import io.realm.RealmObject;
 
 
-public class ApiAttachment {
+public class ApiAttachment extends RealmObject {
 
     @SerializedName("type")
     @Expose

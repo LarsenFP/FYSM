@@ -7,6 +7,6 @@ package valery.pankov.fysm.consts;
 public class ApiConstants {
     public static final String[] DEFAULT_LOGIN_SCOPE={};
     public static final Double DEFAULT_VERSION = 5.68;
-    public static final int DEFAULT_COUNT = 10;
+    public static final int DEFAULT_COUNT = 2;
 
 }

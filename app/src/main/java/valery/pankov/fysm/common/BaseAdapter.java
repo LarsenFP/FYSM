@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import valery.pankov.fysm.model.view.BaseViewModel;
-import valery.pankov.fysm.rest.RestClient;
 import valery.pankov.fysm.ui.holder.BaseViewHolder;
 
 /**
@@ -77,5 +76,15 @@ public class BaseAdapter extends RecyclerView.Adapter<BaseViewHolder<BaseViewMod
 
     public void clearList(){
         list.clear();
+    }
+
+    public int getRealItemCount() {
+        int count = 0;
+        for (int i = 0; i < getItemCount(); i++) {
+            if (!getItem(i).isItemDecorator()) {
+                count += 1;
+            }
+        }
+        return count;
     }
 }

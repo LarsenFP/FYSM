@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 
+import valery.pankov.fysm.ui.activity.BaseActivity;
+
 /**
  * Created by Valery on 27.08.2017.
  */
@@ -33,5 +35,8 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
     @StringRes
     public abstract int onCreateToolbarTitle();
 
+    public BaseActivity getBaseActivity() {
+        return (BaseActivity) getActivity();
+    }
 
 }

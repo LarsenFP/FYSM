@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 
@@ -20,6 +21,8 @@ import valery.pankov.fysm.ui.fragment.BaseFragment;
 
 public abstract class BaseActivity extends MvpAppCompatActivity {
 
+    protected ProgressBar mProgressBar;
+
     @Inject
     MyFragmentManager myFragmentManager;
 
@@ -27,10 +30,12 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         MyApplication.getApplicationComponent().inject(this);
         setContentView(R.layout.activity_base);
 
 
+        mProgressBar = (ProgressBar) findViewById(R.id.progress);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -65,6 +70,10 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
 
     public boolean removeFragment (BaseFragment fragment){
         return myFragmentManager.removeFragment(this, fragment);
+    }
+
+    public ProgressBar getProgressBar() {
+        return mProgressBar;
     }
 
     @Override
