@@ -10,6 +10,8 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import valery.pankov.fysm.MyApplication;
 import valery.pankov.fysm.R;
 import valery.pankov.fysm.common.manager.MyFragmentManager;
@@ -21,7 +23,11 @@ import valery.pankov.fysm.ui.fragment.BaseFragment;
 
 public abstract class BaseActivity extends MvpAppCompatActivity {
 
+    @BindView(R.id.progress)
     protected ProgressBar mProgressBar;
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Inject
     MyFragmentManager myFragmentManager;
@@ -29,14 +35,10 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_base);
+        ButterKnife.bind(this);
 
         MyApplication.getApplicationComponent().inject(this);
-        setContentView(R.layout.activity_base);
-
-
-        mProgressBar = (ProgressBar) findViewById(R.id.progress);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         FrameLayout parent = (FrameLayout) findViewById(R.id.main_wraper);

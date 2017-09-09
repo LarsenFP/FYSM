@@ -3,6 +3,8 @@ package valery.pankov.fysm.di.component;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import valery.pankov.fysm.MVP.presenter.MainPresenter;
+import valery.pankov.fysm.MVP.presenter.MembersPresenter;
 import valery.pankov.fysm.MVP.presenter.NewsFeedPresenter;
 import valery.pankov.fysm.common.manager.NetworkManager;
 import valery.pankov.fysm.di.module.ApplicationModule;
@@ -35,8 +37,13 @@ public interface ApplicationComponent {
 
     //presenters
     void inject(NewsFeedPresenter presenter);
+    void inject(MainPresenter presenter);
+    void inject(MembersPresenter presenter);
 
     //managers
     void inject(NetworkManager manager);
+
+
+
 
 }

@@ -9,12 +9,15 @@ import java.util.concurrent.Callable;
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableTransformer;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.Sort;
+import valery.pankov.fysm.CurrentUser;
 import valery.pankov.fysm.MVP.view.BaseFeedView;
 import valery.pankov.fysm.MyApplication;
 import valery.pankov.fysm.common.utils.VkListHelper;
+import valery.pankov.fysm.consts.ApiConstants;
 import valery.pankov.fysm.model.WallItem;
 import valery.pankov.fysm.model.view.BaseViewModel;
 import valery.pankov.fysm.model.view.NewsItemBodyViewModel;
@@ -33,6 +36,8 @@ public class NewsFeedPresenter extends BaseFeedPresenter<BaseFeedView> {
     @Inject
     WallApi mWallApi;
 
+    private boolean enableIdFiltering = false;
+
 
     public NewsFeedPresenter() {
         MyApplication.getApplicationComponent().inject(this);
@@ -40,8 +45,9 @@ public class NewsFeedPresenter extends BaseFeedPresenter<BaseFeedView> {
 
     @Override
     public Observable<BaseViewModel> onCreateLoadDataObservable(int count, int offset) {
-        return mWallApi.get(new WallGetRequestModel(-23400027, count, offset).toMap())
+        return mWallApi.get(new WallGetRequestModel(ApiConstants.MY_GROUP_ID, count, offset).toMap())
                 .flatMap(full -> Observable.fromIterable(VkListHelper.getWallList(full.response)))
+                .compose(applyFilter())
                 .doOnNext(this::saveToDb)
                 .flatMap(wallItem -> {
                     List<BaseViewModel> baseItems = new ArrayList<>();
@@ -56,9 +62,9 @@ public class NewsFeedPresenter extends BaseFeedPresenter<BaseFeedView> {
     public Observable<BaseViewModel> onCreateRestoreDataObservable() {
         return Observable.fromCallable(getListFromRealmCallable())
                 .flatMap(Observable::fromIterable)
+                .compose(applyFilter())
                 .flatMap(wallItem -> Observable.fromIterable(parsePojoModel(wallItem)));
     }
-
 
     private List<BaseViewModel> parsePojoModel(WallItem wallItem) {
         List<BaseViewModel> baseItems = new ArrayList<>();
@@ -77,6 +83,19 @@ public class NewsFeedPresenter extends BaseFeedPresenter<BaseFeedView> {
                     .findAllSorted(sortFields, sortOrder);
             return realm.copyFromRealm(realmResults);
         };
+    }
+
+    public void setEnableIdFiltering(boolean enableIdFiltering) {
+        this.enableIdFiltering = enableIdFiltering;
+    }
+
+    protected ObservableTransformer<WallItem, WallItem> applyFilter() {
+        if (enableIdFiltering && CurrentUser.getId() != null) {
+            return baseItemObservable -> baseItemObservable.
+                    filter(wallItem -> CurrentUser.getId().equals(String.valueOf(wallItem.getFromId())));
+        } else {
+            return baseItemObservable -> baseItemObservable;
+        }
     }
 }
 

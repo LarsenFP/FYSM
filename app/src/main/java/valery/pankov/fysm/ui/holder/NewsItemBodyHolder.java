@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import valery.pankov.fysm.MyApplication;
 import valery.pankov.fysm.R;
 import valery.pankov.fysm.model.view.NewsItemBodyViewModel;
@@ -16,19 +18,19 @@ import valery.pankov.fysm.model.view.NewsItemBodyViewModel;
 
 public class NewsItemBodyHolder extends BaseViewHolder<NewsItemBodyViewModel> {
 
-    private TextView tvText;
+    @BindView(R.id.tv_text)
+    public TextView tvText;
 
-    private TextView tvAttachments;
+    @BindView(R.id.tv_attachments)
+    public TextView tvAttachments;
 
     @Inject
     protected Typeface mFontGoogle;
 
     public NewsItemBodyHolder(View itemView) {
         super(itemView);
+        ButterKnife.bind(this, itemView);
         MyApplication.getApplicationComponent().inject(this);
-        tvText = (TextView) itemView.findViewById(R.id.tv_text);
-        tvAttachments = (TextView) itemView.findViewById(R.id.tv_attachments);
-
         if (tvAttachments !=null){
             tvAttachments.setTypeface(mFontGoogle);
         }

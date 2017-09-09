@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import valery.pankov.fysm.MyApplication;
 import valery.pankov.fysm.R;
 import valery.pankov.fysm.common.utils.Utils;
@@ -22,14 +24,26 @@ import valery.pankov.fysm.model.view.counter.RepostCounterViewModel;
 
 public class NewsItemFooterHolder extends BaseViewHolder<NewsItemFooterViewModel>{
 
-    private TextView tvDate;
+    @BindView(R.id.tv_date)
+    public TextView tvDate;
 
-    private TextView tvLikesCount;
-    private TextView tvLikesIcon;
-    private TextView tvCommentsIcon;
-    private TextView tvCommentsCount;
-    private TextView tvRepostIcon;
-    private TextView tvRepostsCount;
+    @BindView(R.id.tv_likes_count)
+    public TextView tvLikesCount;
+
+    @BindView(R.id.tv_likes_icon)
+    public TextView tvLikesIcon;
+
+    @BindView(R.id.tv_comments_icon)
+    public TextView tvCommentsIcon;
+
+    @BindView(R.id.tv_comments_count)
+    public TextView tvCommentsCount;
+
+    @BindView(R.id.tv_reposts_icon)
+    public TextView tvRepostIcon;
+
+    @BindView(R.id.tv_reposts_count)
+    public TextView tvRepostsCount;
 
     @Inject
     Typeface mGoogleFontTypeface;
@@ -39,18 +53,11 @@ public class NewsItemFooterHolder extends BaseViewHolder<NewsItemFooterViewModel
 
     public NewsItemFooterHolder(View itemView) {
         super(itemView);
+        ButterKnife.bind(this, itemView);
         MyApplication.getApplicationComponent().inject(this);
 
         mContext = itemView.getContext();
         mResources = mContext.getResources();
-
-        tvDate = (TextView) itemView.findViewById(R.id.tv_date);
-        tvLikesIcon = (TextView) itemView.findViewById(R.id.tv_likes_icon);
-        tvLikesCount = (TextView) itemView.findViewById(R.id.tv_likes_count);
-        tvCommentsIcon = (TextView) itemView.findViewById(R.id.tv_comments_icon);
-        tvCommentsCount = (TextView) itemView.findViewById(R.id.tv_comments_count);
-        tvRepostIcon = (TextView) itemView.findViewById(R.id.tv_reposts_icon);
-        tvRepostsCount= (TextView) itemView.findViewById(R.id.tv_reposts_count);
 
         tvLikesIcon.setTypeface(mGoogleFontTypeface);
         tvCommentsIcon.setTypeface(mGoogleFontTypeface);

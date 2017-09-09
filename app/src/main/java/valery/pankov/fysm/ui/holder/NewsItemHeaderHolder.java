@@ -1,13 +1,14 @@
 package valery.pankov.fysm.ui.holder;
 
 import android.content.Context;
-import android.transition.CircularPropagation;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import valery.pankov.fysm.R;
 import valery.pankov.fysm.model.view.NewsItemHeaderViewModel;
@@ -18,20 +19,21 @@ import valery.pankov.fysm.model.view.NewsItemHeaderViewModel;
 
 public class NewsItemHeaderHolder extends BaseViewHolder<NewsItemHeaderViewModel> {
 
-    private CircleImageView civProfileImage;
+    @BindView(R.id.civ_profile_image)
+    public CircleImageView civProfileImage;
 
-    private TextView tvName;
+    @BindView(R.id.tv_profile_name)
+    public TextView tvName;
 
-    private ImageView ivRepostedIcon;
+    @BindView(R.id.iv_reposted_icon)
+    public ImageView ivRepostedIcon;
 
-    private TextView tvRepostedProfileName;
+    @BindView(R.id.tv_reposted_profile_name)
+    public TextView tvRepostedProfileName;
 
     public NewsItemHeaderHolder(View itemView) {
         super(itemView);
-        civProfileImage = (CircleImageView) itemView.findViewById(R.id.civ_profile_image);
-        tvName = (TextView) itemView.findViewById(R.id.tv_profile_name);
-        ivRepostedIcon = (ImageView) itemView.findViewById(R.id.iv_reposted_icon);
-        tvRepostedProfileName = (TextView) itemView.findViewById(R.id.tv_reposted_profile_name);
+        ButterKnife.bind(this, itemView);
     }
 
 
