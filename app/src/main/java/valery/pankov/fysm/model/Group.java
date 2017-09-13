@@ -6,10 +6,12 @@ import com.google.gson.annotations.SerializedName;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 import valery.pankov.fysm.model.attachment.Link;
 
 public class Group extends RealmObject implements Owner{
 
+    @PrimaryKey
     @SerializedName("id")
     @Expose
     private Integer id;

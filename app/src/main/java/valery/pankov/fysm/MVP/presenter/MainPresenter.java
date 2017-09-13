@@ -22,6 +22,7 @@ import valery.pankov.fysm.rest.api.UsersApi;
 import valery.pankov.fysm.rest.model.request.UsersGetRequestModel;
 import valery.pankov.fysm.ui.fragment.BaseFragment;
 import valery.pankov.fysm.ui.fragment.BoardFragment;
+import valery.pankov.fysm.ui.fragment.InfoFragment;
 import valery.pankov.fysm.ui.fragment.MembersFragment;
 import valery.pankov.fysm.ui.fragment.MyPostsFragment;
 import valery.pankov.fysm.ui.fragment.NewsFeedFragment;
@@ -114,6 +115,9 @@ public class MainPresenter extends MvpPresenter<MainView> {
                 break;
             case 5:
                 fragment = new BoardFragment();
+                break;
+            case 6:
+                fragment = new InfoFragment();
                 break;
         }
 

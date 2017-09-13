@@ -4,6 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import valery.pankov.fysm.MVP.presenter.BoardPresenter;
+import valery.pankov.fysm.MVP.presenter.InfoPresenter;
 import valery.pankov.fysm.MVP.presenter.MainPresenter;
 import valery.pankov.fysm.MVP.presenter.MembersPresenter;
 import valery.pankov.fysm.MVP.presenter.NewsFeedPresenter;
@@ -41,6 +42,7 @@ public interface ApplicationComponent {
     void inject(MainPresenter presenter);
     void inject(MembersPresenter presenter);
     void inject(BoardPresenter presenter);
+    void inject(InfoPresenter presenter);
 
     //managers
     void inject(NetworkManager manager);
