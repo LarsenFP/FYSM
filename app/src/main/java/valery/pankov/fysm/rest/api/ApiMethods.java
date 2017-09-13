@@ -11,4 +11,6 @@ public class ApiMethods {
 
 
     public static final String GROUPS_GET_MEMBERS = "groups.getMembers";
+
+    public static final String BOARD_GET_TOPICS = "board.getTopics";
 }

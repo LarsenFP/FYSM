@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import valery.pankov.fysm.rest.RestClient;
+import valery.pankov.fysm.rest.api.BoardApi;
 import valery.pankov.fysm.rest.api.GroupsApi;
 import valery.pankov.fysm.rest.api.UsersApi;
 import valery.pankov.fysm.rest.api.WallApi;
@@ -44,5 +45,11 @@ public class RestModule {
     @Singleton
     public GroupsApi provideGroupsApi() {
         return mRestClient.createService(GroupsApi.class);
+    }
+
+    @Provides
+    @Singleton
+    public BoardApi provideBoardApi() {
+        return mRestClient.createService(BoardApi.class);
     }
 }
