@@ -41,7 +41,7 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
         MyApplication.getApplicationComponent().inject(this);
         setSupportActionBar(toolbar);
 
-        FrameLayout parent = (FrameLayout) findViewById(R.id.main_wraper);
+        FrameLayout parent = (FrameLayout) findViewById(R.id.main_wrapper);
         getLayoutInflater().inflate(getMainContentLayout(), parent);
     }
 
@@ -58,12 +58,12 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
         }
     }
     public void setContent(BaseFragment fragment){
-        myFragmentManager.setFragment(this,fragment,R.id.main_wraper);
+        myFragmentManager.setFragment(this,fragment,R.id.main_wrapper);
 
     }
 
     public void addContent (BaseFragment fragment){
-        myFragmentManager.addFragment(this,fragment,R.id.main_wraper);
+        myFragmentManager.addFragment(this,fragment,R.id.main_wrapper);
     }
 
     public boolean removeCurrentFragment (){

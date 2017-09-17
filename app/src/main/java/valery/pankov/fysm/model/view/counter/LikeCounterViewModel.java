@@ -1,6 +1,6 @@
 package valery.pankov.fysm.model.view.counter;
 
-import valery.pankov.fysm.model.Likes;
+import valery.pankov.fysm.model.countable.Likes;
 
 /**
  * Created by Valery on 01.09.2017.

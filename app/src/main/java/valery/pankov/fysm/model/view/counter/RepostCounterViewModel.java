@@ -1,6 +1,6 @@
 package valery.pankov.fysm.model.view.counter;
 
-import valery.pankov.fysm.model.Reposts;
+import valery.pankov.fysm.model.countable.Reposts;
 
 /**
  * Created by Valery on 01.09.2017.

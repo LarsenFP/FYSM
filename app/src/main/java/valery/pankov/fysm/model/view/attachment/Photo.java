@@ -1,5 +1,5 @@
 
-package valery.pankov.fysm.model.attachment;
+package valery.pankov.fysm.model.view.attachment;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

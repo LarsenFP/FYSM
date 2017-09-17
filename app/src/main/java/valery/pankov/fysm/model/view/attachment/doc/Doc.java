@@ -1,10 +1,11 @@
-package valery.pankov.fysm.model.attachment;
+package valery.pankov.fysm.model.view.attachment.doc;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.vk.sdk.api.model.VKAttachments;
 
 import io.realm.RealmObject;
+import valery.pankov.fysm.model.view.attachment.Attachment;
 
 
 public class Doc extends RealmObject implements Attachment {
@@ -35,6 +36,14 @@ public class Doc extends RealmObject implements Attachment {
     @SerializedName("access_key")
     @Expose
     private String accessKey;
+    @SerializedName("preview")
+    @Expose
+    public Preview preview;
+
+
+    public Preview getPreview() {
+        return preview;
+    }
 
     public int getId() {
         return id;

@@ -1,5 +1,5 @@
 
-package valery.pankov.fysm.model.attachment;
+package valery.pankov.fysm.model.view.attachment;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -8,6 +8,8 @@ import com.vk.sdk.api.model.VKAttachments;
 import java.util.NoSuchElementException;
 
 import io.realm.RealmObject;
+import valery.pankov.fysm.model.view.attachment.doc.Doc;
+import valery.pankov.fysm.model.view.attachment.video.Video;
 
 
 public class ApiAttachment extends RealmObject {

@@ -1,4 +1,4 @@
-package valery.pankov.fysm.model.attachment;
+package valery.pankov.fysm.model.view.attachment;
 
 import com.vk.sdk.api.model.Identifiable;
 

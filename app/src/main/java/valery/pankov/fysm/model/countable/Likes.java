@@ -1,5 +1,5 @@
 
-package valery.pankov.fysm.model;
+package valery.pankov.fysm.model.countable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -53,4 +53,7 @@ public class Likes extends RealmObject {
         this.canPublish = canPublish;
     }
 
+    public boolean isUserLikes () {
+        return userLikes == 1;
+    }
 }

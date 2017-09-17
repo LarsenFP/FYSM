@@ -8,6 +8,7 @@ import valery.pankov.fysm.rest.RestClient;
 import valery.pankov.fysm.rest.api.BoardApi;
 import valery.pankov.fysm.rest.api.GroupsApi;
 import valery.pankov.fysm.rest.api.UsersApi;
+import valery.pankov.fysm.rest.api.VideoApi;
 import valery.pankov.fysm.rest.api.WallApi;
 
 /**
@@ -51,5 +52,11 @@ public class RestModule {
     @Singleton
     public BoardApi provideBoardApi() {
         return mRestClient.createService(BoardApi.class);
+    }
+
+    @Provides
+    @Singleton
+    public VideoApi provideVideoApi() {
+        return mRestClient.createService(VideoApi.class);
     }
 }

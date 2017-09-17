@@ -7,7 +7,10 @@ import com.google.gson.annotations.SerializedName;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
-import valery.pankov.fysm.model.attachment.ApiAttachment;
+import valery.pankov.fysm.model.countable.Comments;
+import valery.pankov.fysm.model.countable.Likes;
+import valery.pankov.fysm.model.countable.Reposts;
+import valery.pankov.fysm.model.view.attachment.ApiAttachment;
 
 public class WallItem extends RealmObject {
 
