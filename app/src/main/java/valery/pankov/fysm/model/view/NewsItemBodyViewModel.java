@@ -19,13 +19,6 @@ public class NewsItemBodyViewModel extends BaseViewModel {
 
     private boolean mIsRepost;
 
-//    private String mAttachmentType;
-
-
-
-//    private Photo photo604i;
-//    private String photo604;
-
     public NewsItemBodyViewModel(WallItem wallItem){
         this.mId = wallItem.getId();
         this.mIsRepost = wallItem.haveSharedRepost();
@@ -35,16 +28,6 @@ public class NewsItemBodyViewModel extends BaseViewModel {
         }else {
             this.mText = wallItem.getText();
             this.mAttachmentString = wallItem.getAttachmentsString();
-
-//            if(wallItem.getAttachments().get(0).getType().equals("photo")){
-//
-//                photo604i = wallItem.getAttachments().get(0).getPhoto();
-//                //photo604i = (Photo) new ApiAttachment().getAttachment(wallItem);
-//                photo604=photo604i.getPhoto604();
-//
-//            }
-
-            //this.mAttachmentType = wallItem.getAttachments().get(0).getType();
         }
     }
     @Override
@@ -65,17 +48,9 @@ public class NewsItemBodyViewModel extends BaseViewModel {
         return mText;
     }
 
-//    public String getAttachmentType() {
-//        return mAttachmentType;
-//    }
-
     public String getAttachmentString() {
         return mAttachmentString;
     }
-
-//    public String getPhoto604String() {
-//        return photo604;
-//    }
 
     @Override
     public boolean isItemDecorator() {

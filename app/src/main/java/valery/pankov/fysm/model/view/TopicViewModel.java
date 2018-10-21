@@ -3,10 +3,17 @@ package valery.pankov.fysm.model.view;
 import android.view.View;
 import android.widget.TextView;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import valery.pankov.fysm.MyApplication;
 import valery.pankov.fysm.R;
+import valery.pankov.fysm.common.manager.MyFragmentManager;
+import valery.pankov.fysm.model.Place;
 import valery.pankov.fysm.model.Topic;
+import valery.pankov.fysm.ui.activity.BaseActivity;
+import valery.pankov.fysm.ui.fragment.TopicCommentsFragment;
 import valery.pankov.fysm.ui.holder.BaseViewHolder;
 
 /**
@@ -64,6 +71,10 @@ public class TopicViewModel extends BaseViewModel {
 
     public static class TopicViewHolder extends BaseViewHolder<TopicViewModel> {
 
+
+        @Inject
+        MyFragmentManager mFragmentManager;
+
         @BindView(R.id.tv_title)
         public TextView tvTitle;
 
@@ -73,6 +84,7 @@ public class TopicViewModel extends BaseViewModel {
 
         public TopicViewHolder(View itemView) {
             super(itemView);
+            MyApplication.getApplicationComponent().inject(this);
             ButterKnife.bind(this, itemView);
         }
 
@@ -80,6 +92,14 @@ public class TopicViewModel extends BaseViewModel {
         public void bindViewHolder(TopicViewModel topicViewModel) {
             tvTitle.setText(topicViewModel.getTitle());
             tvCommentsCount.setText(topicViewModel.getCommentsCount());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mFragmentManager.addFragment((BaseActivity) view.getContext(),
+                            TopicCommentsFragment.newInstance(new Place(String.valueOf(topicViewModel.getGroupId()), String.valueOf(topicViewModel.getId()))),
+                            R.id.main_wrapper);
+                }
+            });
         }
 
         @Override

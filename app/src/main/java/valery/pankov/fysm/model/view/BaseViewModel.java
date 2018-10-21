@@ -17,6 +17,7 @@ public abstract class BaseViewModel {
     public abstract LayoutTypes getType();
 
 
+
     public BaseViewHolder createViewHolder (ViewGroup parent){
         return onCreateViewHolder(LayoutInflater.from(parent.getContext())
                 .inflate(getType().getValue(), parent, false));
@@ -41,9 +42,12 @@ public abstract class BaseViewModel {
         AttachmentLinkExternal(R.layout.item_attachment_link_external),
         AttachmentPage(R.layout.item_attachment_page),
         AttachmentVideo(R.layout.item_attachment_video),
-
         OpenedPostHeader(R.layout.item_opened_post_header),
-        OpenedPostRepostHeader(R.layout.item_opened_post_repost_header);
+        OpenedPostRepostHeader(R.layout.item_opened_post_repost_header),
+        CommentHeader(R.layout.item_comment_header),
+        CommentBody(R.layout.item_comment_body),
+        CommentFooter(R.layout.item_comment_footer),
+        CreatePostText(R.layout.item_create_post_text);;
 
         private final int id;
 

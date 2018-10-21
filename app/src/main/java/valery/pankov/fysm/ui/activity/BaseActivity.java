@@ -2,6 +2,7 @@ package valery.pankov.fysm.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
@@ -22,6 +23,9 @@ import valery.pankov.fysm.ui.fragment.BaseFragment;
  */
 
 public abstract class BaseActivity extends MvpAppCompatActivity {
+
+    @BindView(R.id.fab)
+    public FloatingActionButton mFab;
 
     @BindView(R.id.progress)
     protected ProgressBar mProgressBar;
@@ -48,9 +52,7 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
     @LayoutRes
     protected abstract int getMainContentLayout();
 
-    public void fragmentOnScreen(BaseFragment fragment){
-        setToolbarTitle(fragment.createToolbarTitle(this));
-    }
+
 
     public void setToolbarTitle(String title){
         if(getSupportActionBar() !=null){
@@ -81,5 +83,20 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
     @Override
     public void onBackPressed() {
         removeCurrentFragment();
+    }
+
+    public void setupFabVisibility(boolean needFab) {
+        if (mFab == null) return;
+
+        if (needFab) {
+            mFab.show();
+        } else {
+            mFab.hide();
+        }
+    }
+
+    public void fragmentOnScreen(BaseFragment baseFragment) {
+        setToolbarTitle(baseFragment.createToolbarTitle(this));
+        setupFabVisibility(baseFragment.needFab());
     }
 }

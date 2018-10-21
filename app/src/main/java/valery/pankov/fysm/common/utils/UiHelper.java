@@ -5,6 +5,8 @@ import android.content.res.Resources;
 import android.view.View;
 import android.widget.TextView;
 
+import valery.pankov.fysm.R;
+
 /**
  * Created by Valery on 17.09.2017.
  */
@@ -29,5 +31,25 @@ public class UiHelper {
         } else {
             textView.setVisibility(View.GONE);
         }
+    }
+
+    public void setUpTextViewWithMessage(TextView textView, String s, String messageIfEmpty) {
+        String s1;
+        int color;
+        Resources res = textView.getResources();
+
+        if (s.length() != 0) {
+            textView.setVisibility(View.VISIBLE);
+            color = android.R.color.primary_text_light;
+
+            s1 = s;
+
+        } else {
+            s1 = "Поделился";
+            color = R.color.colorIcon;
+        }
+
+        textView.setText(s1);
+        textView.setTextColor(res.getColor(color));
     }
 }

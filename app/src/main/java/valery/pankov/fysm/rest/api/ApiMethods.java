@@ -19,5 +19,11 @@ public class ApiMethods {
 
     public static final String VIDEO_GET = "video.get";
 
+    public static final String WALL_GET_COMMENTS = "wall.getComments";
+
+    public static final String BOARD_GET_COMMENTS = "board.getComments";
+
+
+
 
 }

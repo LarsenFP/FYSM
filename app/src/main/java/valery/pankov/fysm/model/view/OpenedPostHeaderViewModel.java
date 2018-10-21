@@ -10,6 +10,7 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import valery.pankov.fysm.R;
 import valery.pankov.fysm.common.utils.UiHelper;
+import valery.pankov.fysm.model.CommentItem;
 import valery.pankov.fysm.model.WallItem;
 import valery.pankov.fysm.ui.holder.BaseViewHolder;
 
@@ -26,6 +27,15 @@ public class OpenedPostHeaderViewModel extends BaseViewModel {
 
     private String mText;
 
+
+    public OpenedPostHeaderViewModel(CommentItem commentItem) {
+        this.mId = commentItem.getId();
+
+        this.mProfileName = commentItem.getSenderName();
+        this.mProfilePhoto = commentItem.getSenderPhoto();
+
+        this.mText = commentItem.getDisplayText();
+    }
 
     public OpenedPostHeaderViewModel(WallItem wallItem) {
         this.mId = wallItem.getId();
@@ -64,6 +74,7 @@ public class OpenedPostHeaderViewModel extends BaseViewModel {
     public String getText() {
         return mText;
     }
+
 
     static class OpenedPostHeaderHolder extends BaseViewHolder<OpenedPostHeaderViewModel> {
 
